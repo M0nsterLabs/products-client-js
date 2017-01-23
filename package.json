@@ -1,0 +1,42 @@
+{
+  "name": "products-client-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel -d dist src",
+    "release": "./node_modules/.bin/babel -d dist --compact true src",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M0nsterLabs/products-client-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/M0nsterLabs/products-client-js/issues"
+  },
+  "homepage": "https://github.com/M0nsterLabs/products-client-js#readme",
+  "description": "",
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-0"
+    ]
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "babel-cli": "^6.18.0",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "bluebird": "^3.4.7",
+    "chai": "^3.5.0",
+    "isomorphic-fetch": "^2.2.1",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
