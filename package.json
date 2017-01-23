@@ -1,7 +1,7 @@
 {
   "name": "tm-products-api-client-js",
-  "version": "1.0.0",
-  "main": "src/index.js",
+  "version": "1.0.1",
+  "main": "dist/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel -d dist src",
     "release": "./node_modules/.bin/babel -d dist --compact true src",
