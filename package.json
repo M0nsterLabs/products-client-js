@@ -5,7 +5,8 @@
   "scripts": {
     "build": "./node_modules/.bin/babel -d dist src",
     "release": "./node_modules/.bin/babel -d dist --compact true src",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch",
+    "prepublish": "./node_modules/.bin/babel -d dist --compact true src"
   },
   "author": "TemplateMonster.com",
   "license": "MIT",
