@@ -7,7 +7,7 @@
     "release": "./node_modules/.bin/babel -d dist --compact true src",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch"
   },
-  "author": "",
+  "author": "TemplateMonster.com",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "url": "https://github.com/M0nsterLabs/products-client-js/issues"
   },
   "homepage": "https://github.com/M0nsterLabs/products-client-js#readme",
-  "description": "",
+  "description": "Products API JS client",
   "babel": {
     "presets": [
       "latest",

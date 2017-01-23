@@ -4,21 +4,28 @@ import sinon from 'sinon';
 
 describe('Products API', function () {
 	beforeEach(function () {
-		this.api = new Products('http://api.templatemonster.com/products/v1');
+		this.api = new Products('http://api.templatemonster.com/products/v1', 'en');
 
-		this.willReturnResponse = function (data) {
+		this.willReturnResponse = function (url, data) {
 			this.fetch = sinon.stub();
 			this.api.engine = this.fetch;
 
-			const response = new Response(JSON.stringify(data));
-			this.fetch.returns(Promise.resolve(response));
+			if (typeof data === "undefined") {
+				data = url;
+				const response = new Response(JSON.stringify(data));
+				this.fetch.returns(Promise.resolve(response));
+			} else {
+				const response = new Response(JSON.stringify(data));
+				this.fetch.withArgs(url).returns(Promise.resolve(response));
+			}
 		}
 	});
 
 	it('gets product info', function (done) {
-		const template = {id: 123456};
+		const template = {id: 12345, title: "Sample title"};
 
-		this.willReturnResponse(template);
+		this.willReturnResponse('http://api.templatemonster.com/products/v1/products/en/12345', template);
+
 		this.api.getProduct(12345).then(function (response) {
 			assert.deepEqual(template, response);
 			done();
