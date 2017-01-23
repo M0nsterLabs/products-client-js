@@ -6,9 +6,13 @@ describe('Products API', function () {
 	beforeEach(function () {
 		this.api = new Products('http://api.templatemonster.com/products/v1', 'en');
 
-		this.willReturnResponse = function (url, data) {
+		this.willInjectFetch = function () {
 			this.fetch = sinon.stub();
 			this.api.engine = this.fetch;
+		};
+
+		this.willReturnResponse = function (url, data) {
+			this.willInjectFetch();
 
 			if (typeof data === "undefined") {
 				data = url;
@@ -18,6 +22,12 @@ describe('Products API', function () {
 				const response = new Response(JSON.stringify(data));
 				this.fetch.withArgs(url).returns(Promise.resolve(response));
 			}
+		};
+
+		this.willReturn404 = function () {
+		  this.willInjectFetch();
+			const response = new Response(JSON.stringify(data));
+			this.fetch.returns(Promise.resolve(response));
 		}
 	});
 
