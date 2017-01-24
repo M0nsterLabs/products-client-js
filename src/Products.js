@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 export default class Products {
 	constructor(url, locale, engine) {
 		this.url = url;
