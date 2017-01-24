@@ -6,9 +6,17 @@ export default class Products {
 		this.getProduct = this.getProduct.bind(this);
 	}
 
-	async getProduct (id) {
-		console.log("Calling getProduct", id, this, this.engine);
-		const response = await this.engine(this.url + "/products/" + this.locale + "/" + id);
-		return await response.json();
+	getProduct(id) {
+		return this.engine(this.url + "/products/" + this.locale + "/" + id)
+			.then(function (response) {
+				return response.json();
+			});
+		// 	.then(function (obj) {
+		// 		return response.json();
+		// 	})
+		// console.log("Calling getProduct", id, this, this.engine);
+		// const response = await
+		// return await
+		// response.json();
 	}
 }
