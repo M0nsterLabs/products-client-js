@@ -7,6 +7,7 @@ export default class Products {
 	}
 
 	async getProduct (id) {
+		console.log("Calling getProduct", id, this, this.engine);
 		const response = await this.engine(this.url + "/products/" + this.locale + "/" + id);
 		return await response.json();
 	}
