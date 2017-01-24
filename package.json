@@ -1,6 +1,6 @@
 {
   "name": "tm-products-api-client-js",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "dist/index.js",
   "scripts": {
     "doc": "jsdoc --configure etc/jsdoc.json src",
