@@ -7,7 +7,13 @@ export default class Products {
 	}
 
 	getProduct(id) {
-		return this.engine(this.url + "/products/" + this.locale + "/" + id)
+		console.log("Calling getProduct id", id);
+		console.log("Calling getProduct this", this);
+		console.log("Calling getProduct this engine", this.engine);
+		const result = this.engine(this.url + "/products/" + this.locale + "/" + id);
+		console.log('result', result);
+
+		return result
 			.then(function (response) {
 				return response.json();
 			});
