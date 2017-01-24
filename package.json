@@ -3,10 +3,10 @@
   "version": "1.0.2",
   "main": "dist/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel -d dist src",
+    "build": "imraf dist && babel -d dist src",
     "release": "./node_modules/.bin/babel -d dist --compact true src",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch",
-    "prepublish": "rimraf dist && babel -d dist src"
+    "prepublish": "npm run build"
   },
   "author": "TemplateMonster.com",
   "license": "MIT",
