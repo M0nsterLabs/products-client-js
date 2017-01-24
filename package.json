@@ -3,8 +3,9 @@
   "version": "1.0.11",
   "main": "dist/index.js",
   "scripts": {
+    "doc": "jsdoc --configure etc/jsdoc.json src",
     "build": "rimraf dist && babel -d dist src",
-    "release": "./node_modules/.bin/babel -d dist --compact true src",
+    "release": "npm version patch && git push && git push --tags && npm publish",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch",
     "prepublish": "npm run build"
   },
@@ -32,6 +33,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
+    "nock": "^9.0.2",
     "rimraf": "^2.5.4",
     "sinon": "^1.17.7"
   },
