@@ -10,20 +10,21 @@ import _ from 'lodash';
  * const products = new Products ('http://api.templatemonster.com/products/v1', 'en');
  * const list = products.getProducts ([12345, 55555]);
  * ~~~~
- * @name Products
+ * @constructor Products
  */
 export default class Products {
 	constructor(url, locale) {
 		this.url = url;
 		this.locale = locale;
-		this.getProduct = this.getProducts.bind(this);
+		this.getProducts = this.getProducts.bind(this);
 	}
 
 
 	/**
-	 * Return products information for a list of identifiers.
-	 * @param ids {int[]} Products identifiers
+	 * Return product information for given identifiers.
+	 * @param ids {int[]} Product identifiers
 	 * @returns {*}
+	 * @method Products#getProducts
 	 */
 	async getProducts(ids) {
 		if (!_.isArray(ids)) {
@@ -40,6 +41,13 @@ export default class Products {
 		return await response.json();
 	}
 
+
+	/**
+	 * Convert a js object into a query string
+	 * @param obj
+	 * @returns {string}
+	 * @private
+	 */
 	_serialize(obj) {
 		let str = [];
 		for (let p in obj)
