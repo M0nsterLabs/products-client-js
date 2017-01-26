@@ -4,11 +4,12 @@
   "main": "dist/index.js",
   "scripts": {
     "predoc": "npm run build",
-    "doc": "jsdoc --configure etc/jsdoc.json dist",
+    "doc": "rimraf doc && jsdoc --configure etc/jsdoc.json dist",
     "build": "rimraf dist && babel -d dist src",
     "release": "npm version patch && git push && git push --tags && npm publish",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register --require babel-polyfill --require bluebird --require isomorphic-fetch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && npm run doc",
+    "clean": "rimraf doc dist"
   },
   "author": "TemplateMonster.com",
   "license": "MIT",
